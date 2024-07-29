@@ -2,203 +2,195 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package calculator;
-/**
- *
- * @author USER
- */
+
 import java.util.Scanner;
 
 public class ConsoleCalculator {
 
     public static void main(String[] args) {
-        
-         // Create a scanner object for user input
-        Scanner scanner = new Scanner(System.in);
-        // Infinite loop to keep the calculator running
-        while (true) { 
-            // Displaying the menu options to the user
-            displayMenu(); 
-            System.out.print("Enter choice (1-26): ");
-            // Get the user's choice
-            int choice = scanner.nextInt(); 
-            // If the user chooses 26, exit the program
-            if (choice == 26) { 
-                System.out.println("Exiting the program.");
-                break;
+        Scanner scanner = new Scanner(System.in); // Create  scanner object for user input
+        while (true) { // loop to keep the calculator running
+            clearScreen(); // Clear the screen before displaying the menu
+            displayMenu(); // Display the menu options
+            System.out.print("Enter choice (1-26): "); // Prompt user for choice
+            int choice = scanner.nextInt(); // Read the user's choice
+
+            if (choice == 26) { // Check if the user wants to exit
+                System.out.println("Exiting the program."); // Inform user about exiting
+                break; // Break the loop to exit
             }
-            // Switch case to handle different operations  based on user's choice
-            switch (choice) { 
-                case 1: // Addition
-                    System.out.print("Enter first number: "); 
-                    double num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    double num2 = scanner.nextDouble(); // Get the second number from the user
-                    System.out.println("Result: " + add(num1, num2));
-                    // Display the result of addition
+
+            clearScreen(); // Clear the screen before displaying the result
+
+            switch (choice) { // Switch based on user's choice
+                case 1:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    double num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    double num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("Result: " + add(num1, num2)); // Display result of addition
                     break;
-                case 2: // Subtraction
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from the user
-                    System.out.println("Result: " + subtract(num1, num2));
-                    // Display the result of subtraction
+                case 2:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("Result: " + subtract(num1, num2)); // Display result of subtraction
                     break;
-                case 3: // Multiplication
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from the user
-                    System.out.println("Result: " + multiply(num1, num2));
-                    // Display the result of multiplication
+                case 3:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("Result: " + multiply(num1, num2)); // Display result of multiplication
                     break;
-                case 4: // Division
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from the user
-                    
-                    if (num2 != 0) { // Check if the second number is not zero to avoid division by zero error
-                        System.out.println("Result: " + divide(num1, num2));
+                case 4:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    if (num2 != 0) { // Check if second number is not zero
+                        System.out.println("Result: " + divide(num1, num2)); // Display result of division
                     } else {
-                        System.out.println("Error! Division by zero."); 
-                        // Display an error message for division by zero
+                        System.out.println("Error! Division by zero."); // Display error message
                     }
                     break;
-                case 5: // Power
-                    System.out.print("Enter base: ");
-                    num1 = scanner.nextDouble(); // Get the base number from the user
-                    System.out.print("Enter exponent: ");
-                    num2 = scanner.nextDouble(); // Get the exponent number from the user
-                    System.out.println("Result: " + Math.pow(num1, num2));
-                    // Display the result of power calculation
+                case 5:
+                    System.out.print("Enter base: "); // Prompt for base
+                    num1 = scanner.nextDouble(); // Read base
+                    System.out.print("Enter exponent: "); // Prompt for exponent
+                    num2 = scanner.nextDouble(); // Read exponent
+                    System.out.println("Result: " + Math.pow(num1, num2)); // Display result of power
                     break;
-                case 6: // Square
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble();  // Get the number from the user
-                    System.out.println("Result: " + square(num1));
-                    // Display the result of the squared number
+                case 6:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + square(num1)); // Display result of square
                     break;
-                case 7: // Cube
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from the user
-                    System.out.println("Result: " + cube(num1));
-                    // Display the result of cubing the number
+                case 7:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + cube(num1)); // Display result of cube
                     break;
-                case 8: // Square root
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from the user
-                    System.out.println("Result: " + Math.sqrt(num1));
-                    // Display the result of square root calculation
+                case 8:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + Math.sqrt(num1)); // Display result of square root
                     break;
-                case 9: // Round
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from the user
-                    System.out.println("Result: " + Math.round(num1)); // Display the result of rounding the number
+                case 9:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + Math.round(num1)); // Display result of round
                     break;
-                case 10: // Ceiling
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from the user
-                    System.out.println("Result: " + Math.ceil(num1)); // Display the result of ceiling function
+                case 10:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + Math.ceil(num1)); // Display result of ceiling
                     break;
-                case 11: // Floor
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from the user
-                    System.out.println("Result: " + Math.floor(num1)); // Display the result of floor function
+                case 11:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + Math.floor(num1)); // Display result of floor
                     break;
-                case 12: // Min Value
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from the user
-                    System.out.println("Result: " + Math.min(num1, num2)); // Display the minimum of the two numbers
+                case 12:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("Result: " + Math.min(num1, num2)); // Display minimum value
                     break;
-                case 13: // Max Value
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from the user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from the user
-                    System.out.println("Result: " + Math.max(num1, num2)); // Display the maximum of the two numbers
+                case 13:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("Result: " + Math.max(num1, num2)); // Display maximum value
                     break;
-                case 14: // Sine
-                    System.out.print("Enter angle in degrees: ");
-                    num1 = scanner.nextDouble(); // Get the angle in degrees from the user
-                    System.out.println("Result: " + Math.sin(Math.toRadians(num1))); // Display the sine of the angle
+                case 14:
+                    System.out.print("Enter angle in degrees: "); // Prompt for angle in degrees
+                    num1 = scanner.nextDouble(); // Read angle
+                    System.out.println("Result: " + Math.sin(Math.toRadians(num1))); // Display sine value
                     break;
-                case 15: // Cosine
-                    System.out.print("Enter angle in degrees: ");
-                    num1 = scanner.nextDouble(); // Get the angle in degrees from the user
-                    System.out.println("Result: " + Math.cos(Math.toRadians(num1))); // Display the cosine of the angle
+                case 15:
+                    System.out.print("Enter angle in degrees: "); // Prompt for angle in degrees
+                    num1 = scanner.nextDouble(); // Read angle
+                    System.out.println("Result: " + Math.cos(Math.toRadians(num1))); // Display cosine value
                     break;
-                case 16: // Arc Sine
-                    System.out.print("Enter value (-1 to 1): ");
-                    num1 = scanner.nextDouble(); // Get the value from
-                case 17: // Arc Cosine
-                    System.out.print("Enter value (-1 to 1): ");
-                    num1 = scanner.nextDouble(); // Get the value from user
-                    System.out.println("Result: " + Math.acos(num1)); // Display the arc cosine of the value
+                case 16:
+                    System.out.print("Enter value (-1 to 1): "); // Prompt for value
+                    num1 = scanner.nextDouble(); // Read value
+                    System.out.println("Result: " + Math.asin(num1)); // Display arc sine value
                     break;
-                case 18: // Arc Tangent
-                    System.out.print("Enter value: ");
-                    num1 = scanner.nextDouble(); // Get the value from user
-                    System.out.println("Result: " + Math.atan(num1)); // Display the arc tangent of the value
+                case 17:
+                    System.out.print("Enter value (-1 to 1): "); // Prompt for value
+                    num1 = scanner.nextDouble(); // Read value
+                    System.out.println("Result: " + Math.acos(num1)); // Display arc cosine value
                     break;
-                case 19: // Exponential
-                    System.out.print("Enter number: ");
-                    num1 = scanner.nextDouble(); // Get the number from user
-                    System.out.println("Result: " + Math.exp(num1)); // Display the exponential of the number
+                case 18:
+                    System.out.print("Enter value: "); // Prompt for value
+                    num1 = scanner.nextDouble(); // Read value
+                    System.out.println("Result: " + Math.atan(num1)); // Display arc tangent value
                     break;
-                case 20: // Check if a number is a palindrome
-                    System.out.print("Enter a number: ");
-                    int intNum = scanner.nextInt(); // Get the number from user
-                    System.out.println("Is palindrome: " + isPalindrome(intNum)); // Check and display if the number is a palindrome
+                case 19:
+                    System.out.print("Enter number: "); // Prompt for number
+                    num1 = scanner.nextDouble(); // Read number
+                    System.out.println("Result: " + Math.exp(num1)); // Display exponential value
                     break;
-                case 21: // Check if a number is an Armstrong number
-                    System.out.print("Enter a number: ");
-                    intNum = scanner.nextInt(); // Get the number from user
-                    System.out.println("Is Armstrong: " + isArmstrong(intNum)); // Check and display if the number is an Armstrong number
+                case 20:
+                    System.out.print("Enter a number: "); // Prompt for number
+                    int intNum = scanner.nextInt(); // Read number
+                    System.out.println("Is palindrome: " + isPalindrome(intNum)); // Display if number is palindrome
                     break;
-                case 22: // Check if a number is prime
-                    System.out.print("Enter a number: ");
-                    intNum = scanner.nextInt(); // Get the number from user
-                    System.out.println("Is prime: " + isPrime(intNum)); // Check and display if the number is prime
+                case 21:
+                    System.out.print("Enter a number: "); // Prompt for number
+                    intNum = scanner.nextInt(); // Read number
+                    System.out.println("Is Armstrong: " + isArmstrong(intNum)); // Display if number is Armstrong number
                     break;
-                case 23: // Calculate the average of a set of numbers
-                    System.out.print("Enter the number of entries: ");
-                    int count = scanner.nextInt(); // Get the number of entries from user
-                    double[] numbers = new double[count]; // Create an array to hold the numbers
-                    for (int i = 0; i < count; i++) {
-                        System.out.print("Enter number " + (i + 1) + ": ");
-                        numbers[i] = scanner.nextDouble(); // Get each number from user
+                case 22:
+                    System.out.print("Enter a number: "); // Prompt for number
+                    intNum = scanner.nextInt(); // Read number
+                    System.out.println("Is prime: " + isPrime(intNum)); // Display if number is prime
+                    break;
+                case 23:
+                    System.out.print("Enter the number of entries: "); // Prompt for number of entries
+                    int count = scanner.nextInt(); // Read number of entries
+                    double[] numbers = new double[count]; // Create array to store numbers
+                    for (int i = 0; i < count; i++) { // Loop to read each number
+                        System.out.print("Enter number " + (i + 1) + ": "); // Prompt for each number
+                        numbers[i] = scanner.nextDouble(); // Read each number
                     }
-                    System.out.println("Average: " + calculateAverage(numbers)); // Display the average of the numbers
+                    System.out.println("Average: " + calculateAverage(numbers)); // Display average
                     break;
-                case 24: // Calculate the Greatest Common Divisor (GCD)
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from user
-                    System.out.println("GCD: " + gcd(num1, num2)); // Display the GCD of the numbers
+                case 24:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("GCD: " + gcd(num1, num2)); // Display GCD
                     break;
-                case 25: // Calculate the Least Common Multiple (LCM)
-                    System.out.print("Enter first number: ");
-                    num1 = scanner.nextDouble(); // Get the first number from user
-                    System.out.print("Enter second number: ");
-                    num2 = scanner.nextDouble(); // Get the second number from user
-                    System.out.println("LCM: " + lcm(num1, num2)); // Display the LCM of the numbers
+                case 25:
+                    System.out.print("Enter first number: "); // Prompt for first number
+                    num1 = scanner.nextDouble(); // Read first number
+                    System.out.print("Enter second number: "); // Prompt for second number
+                    num2 = scanner.nextDouble(); // Read second number
+                    System.out.println("LCM: " + lcm(num1, num2)); // Display LCM
                     break;
-                default: // Handle invalid choices
-                    System.out.println("Invalid choice! Please try again."); // Display error message for invalid choice
+                default:
+                    System.out.println("Invalid choice! Please try again."); // Display error for invalid choice
                     break;
             }
+
+            System.out.print("\nPress Enter to continue..."); // Prompt to press Enter to continue
+            scanner.nextLine(); // Consume newline left-over
+            scanner.nextLine(); // Wait for user to press Enter
         }
-        scanner.close(); // Close the scanner to free resources
+        scanner.close(); // Close the scanner
     }
 
-    // Method to display the menu options
     public static void displayMenu() {
-        System.out.println("\nSelect operation:");
+        System.out.println("\nSelect operation:"); // Display menu options
         System.out.println("1. Add");
         System.out.println("2. Subtract");
         System.out.println("3. Multiply");
@@ -227,88 +219,90 @@ public class ConsoleCalculator {
         System.out.println("26. Exit");
     }
 
-    // Basic arithmetic operations
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J"); // ANSI escape codes to clear the console
+        System.out.flush(); // Flush the output stream
+    }
+
     public static double add(double a, double b) {
-        return a + b; // Return the sum of a and b
+        return a + b; // Return sum of two numbers
     }
 
     public static double subtract(double a, double b) {
-        return a - b; // Return the difference of a and b
+        return a - b; // Return difference of two numbers
     }
 
     public static double multiply(double a, double b) {
-        return a * b; // Return the product of a and b
+        return a * b; // Return product of two numbers
     }
 
     public static double divide(double a, double b) {
-        return a / b; // Return the quotient of a and b
+        return a / b; // Return quotient of two numbers
     }
 
     public static double square(double a) {
-        return a * a; // Return the square of a
+        return a * a; // Return square of a number
     }
 
     public static double cube(double a) {
-        return a * a * a; // Return the cube of a
+        return a * a * a; // Return cube of a number
     }
 
-    // Method to check if a number is a palindrome
     public static boolean isPalindrome(int number) {
-        int reversed = 0, original = number, remainder;
-        while (number != 0) {
-            remainder = number % 10;
-            reversed = reversed * 10 + remainder;
-            number /= 10;
+        int reversed = 0, original = number, remainder; // Initialize variables
+        while (number != 0) { // Loop to reverse the number
+            remainder = number % 10; // Get last digit
+            reversed = reversed * 10 + remainder; // Append digit to reversed number
+            number /= 10; // Remove last digit from number
         }
-        return original == reversed; // Return true if the original number is equal to the reversed number
+        return original == reversed; // Check if original number is equal to reversed number
     }
 
-    // Method to check if a number is an Armstrong number
     public static boolean isArmstrong(int number) {
-        int original = number, remainder, result = 0, n = 0;
-        while (original != 0) {
-            original /= 10;
-            ++n;
+        int original = number, remainder, result = 0, n = 0; // Initialize variables
+        while (original != 0) { // Loop to count digits
+            original /= 10; // Remove last digit from original number
+            ++n; // Increment digit count
         }
-        original = number;
-        while (original != 0) {
-            remainder = original % 10;
-            result += Math.pow(remainder, n);
-            original /= 10;
+        original = number; // Reset original to number
+        while (original != 0) { // Loop to calculate sum of powers of digits
+            remainder = original % 10; // Get last digit
+            result += Math.pow(remainder, n); // Add power of digit to result
+            original /= 10; // Remove last digit from original number
         }
-        return result == number; // Return true if the result is equal to the original number
+        return result == number; // Check if result is equal to original number
     }
 
-    // Method to check if a number is prime
     public static boolean isPrime(int number) {
-        if (number <= 1) return false; // Return false if the number is less than or equal to 1
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) return false; // Return false if the number is divisible by any number other than 1 and itself
+        if (number <= 1) { // Check if number is less than or equal to 1
+            return false; // Return false for non-prime numbers
         }
-        return true; // Return true if the number is prime
+        for (int i = 2; i <= Math.sqrt(number); i++) { // Loop to check divisibility
+            if (number % i == 0) { // Check if number is divisible by i
+                return false; // Return false if number is divisible by i
+            }
+        }
+        return true; // Return true for prime numbers
     }
 
-    // Method to calculate the average of an array of numbers
     public static double calculateAverage(double[] numbers) {
-        double sum = 0.0;
-        for (double num : numbers) {
-            sum += num; // Add each number to the sum
+        double sum = 0; // Initialize sum
+        for (double number : numbers) { // Loop through numbers
+            sum += number; // Add each number to sum
         }
-        return sum / numbers.length; // Return the average
+        return sum / numbers.length; // Return average
     }
 
-    // Method to calculate the Greatest Common Divisor (GCD)
     public static double gcd(double a, double b) {
-        while (b != 0) {
-            double temp = b;
-            b = a % b;
-            a = temp;
+        while (b != 0) { // Loop until b is zero
+            double temp = b; // Store b in temp
+            b = a % b; // Set b to remainder of a divided by b
+            a = temp; // Set a to temp
         }
-        return a; // Return the GCD of a and b
+        return a; // Return GCD
     }
 
-    // Method to calculate the Least Common Multiple (LCM)
     public static double lcm(double a, double b) {
-        return (a * b) / gcd(a, b); // Return the LCM of a and b
+        return (a * b) / gcd(a, b); // Return LCM
     }
 }
