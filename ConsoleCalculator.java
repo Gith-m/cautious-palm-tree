@@ -54,7 +54,7 @@ public class ConsoleCalculator {
                     if (num2 != 0) { // Check if second number is not zero
                         System.out.println("Result: " + divide(num1, num2)); // Display result of division
                     } else {
-                        System.out.println("Error! Division by zero."); // Display error message
+                        System.out.println("Error!"); // Display error message
                     }
                     break;
                 case 5:
@@ -306,4 +306,5 @@ public class ConsoleCalculator {
         return (a * b) / gcd(a, b); // Return LCM
     }
 }
+
 
